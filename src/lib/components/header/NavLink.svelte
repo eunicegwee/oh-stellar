@@ -16,7 +16,7 @@
     color: white;
     text-decoration: none;
     margin: 0 15px;
-    font-size: 16px;
+    font-size: 20px;
     font-family: "Lato", serif;
   }
   /* a,
