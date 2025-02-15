@@ -28,7 +28,7 @@
 <style>
     .logo {
         height: auto;
-        width: 10%;
+        width: 15%;
         margin: auto;
         display: flex;
         justify-content: center;
