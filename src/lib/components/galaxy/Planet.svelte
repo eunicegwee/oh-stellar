@@ -1,5 +1,4 @@
 <script>
-
     export let i;
     export let planet;
     export let userTag;
@@ -7,7 +6,9 @@
 
 <div bind:this={planet} class="planet" id="planet-{i}">
     <img src="/images/galaxy/planets/planet-{i % 4 === 0 ? 4 : i % 4}.svg" alt="Planet {i}"/>
-    <span class="tooltip">{userTag}</span>
+    {#if userTag}
+        <span class="tooltip">{userTag}</span>
+    {/if}
 </div>
 
 <style>
