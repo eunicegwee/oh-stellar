@@ -30,6 +30,7 @@ header {
     padding: 15px 20px;
     background: linear-gradient(to right, #5A3878, #9C528A, #5A3878);
     flex-direction: row-reverse;
+    z-index: 1;
 }
 
 .logo {
