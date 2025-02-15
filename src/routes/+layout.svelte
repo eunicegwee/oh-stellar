@@ -8,6 +8,7 @@
   
     let main;
     let header;
+    let username = "user";
 
     // onMount(() => {
     //   header = document.querySelector('main');
@@ -17,7 +18,7 @@
 
 </script>
   
-<Header bind:header={header} {navLinks} />
+<Header bind:header={header} {navLinks} {username}/>
 <main bind:this={main}>
     <slot />
 </main>

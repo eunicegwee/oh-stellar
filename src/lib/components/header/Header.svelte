@@ -4,6 +4,7 @@
 
     export let navLinks;
     export let header;
+    export let username;
     let searchQuery = "";
     
     function handleSearch() {
@@ -33,7 +34,9 @@
         </div>
         <span class="divider">|</span>
         <NavLink href="/profile" content="Profile" />
-        <NavLink href="/galaxy" content="My Galaxy" />
+        {#if username}
+            <NavLink href='/galaxy/{encodeURIComponent(username)}' content="My Galaxy" />
+        {/if}
     </nav>
 
     <div class="leftthings">
