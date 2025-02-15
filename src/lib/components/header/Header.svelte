@@ -35,6 +35,7 @@
         <span class="divider">|</span>
         <NavLink href="/profile" content="Profile" />
         <NavLink href="/galaxy" content="My Galaxy" />
+        <NavLink href="/login" content="Login" />
     </nav>
 
     <div class="leftthings">

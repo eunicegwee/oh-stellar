@@ -102,7 +102,7 @@
       padding: 30px;
       z-index: 1;
     }
-  
+ 
     .profile {
       color: #E2C8DC;
       text-align: center;
