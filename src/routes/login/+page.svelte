@@ -106,8 +106,6 @@
         <p class="signup-text">No account? <a href="/signup" class="signup-text">Sign up here!</a></p>
       </form>
     </div>
-    <img src="/images/small-star-1.svg" alt="Stars" class="stars-image" />
-    <img src="/images/small-star-3.svg" alt="small-star-1 logo" class="small-star-1-logo"/>
   </main>
   
   <style>
