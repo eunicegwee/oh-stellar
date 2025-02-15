@@ -8,7 +8,7 @@
     let donationMessage;
     let userLevel = 1;
     let star;
-    let username = "username";
+    let username = "name";
     import {onMount} from "svelte";
 
     let editStatus = false;

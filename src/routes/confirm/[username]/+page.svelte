@@ -1,0 +1,86 @@
+<script>
+    let name = "hi";
+</script>
+
+<div class="galaxy">
+    <img src="/images/galaxy/galaxy-bg.jpg" alt="galaxy" id="galaxy-bg">
+    <div class="message-box">
+        <div class="title">
+            <img src="/images/BulletPointStar.svg" alt="bulletpoint star" style="margin-bottom: 10px">
+            <p><u>Confirmation by Accountability Partner</u></p>
+        </div>
+        <div class="message">
+            <p>Your confirmation is important in supporting <u>{name}'s</u> journey toward recovery.</p>
+            <p>If confirmed, the allocated funds will be released to encourage their continued progress.<br>
+                We thank you for your support which plays a crucial role in their commitment to change!</p>
+        </div>
+        <div class="confirmation">
+            <div class="message2">I can confirm, to the best of my ability, that user <u>{name}</u> has successfully refrained from his addiction on 15/02/2025.</div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .message-box {
+        background-color: #583878;
+        height: 600px;
+        width: 70%;
+        border-radius: 20px;
+        z-index: 1;
+        position: absolute;
+    }
+
+    .title {
+        font-family: "Lato";
+        font-weight: bolder;
+        color: #E2C8DC;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        font-size: 50px;
+        gap: 20px;
+        padding: 30px;
+        padding-bottom: 10px;
+    }
+
+    .message, .message2 {
+        position: relative;
+        text-align: center;
+        color: #E2C8DC;
+        font-size: 30px;
+    }
+
+    .message2 {
+        color: black;
+    }
+
+    .confirmation {
+        position: relative;
+        background-color: #D9D9D9;
+        height: 15%;
+        width: 105%;
+        border-radius: 20px;
+        right: 2%;
+        box-shadow: 0px 5px;
+    }
+
+
+    #galaxy-bg {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover; 
+        opacity: 0.5;   
+        z-index: 0;
+    }
+
+    .galaxy {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 140px;
+        position: relative;
+    }
+</style>
