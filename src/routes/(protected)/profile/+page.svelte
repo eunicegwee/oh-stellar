@@ -88,7 +88,6 @@
       font-family: "Lato";
       font-size: 30px;
       margin-top: 10px;
-      
     }
   
     .profile {

@@ -1,14 +1,20 @@
 <script>
-    let username = "";
-    let email = "";
-    let password = "";
-    let errors = {}; // store multiple input errors
-    let isLoading = false; // track loading state
+    import { page } from '$app/stores';
 
-    function handleSignup(event) {
+// Extract the username from the route
+    let username = "";
+    $: username = $page.params.username;
+    let donorname = "";
+    let donateamount = "";
+    let walletaddress ="";
+    let email = "";
+    let errors = {}; 
+    let isLoading = false; 
+
+    function handlePayment(event) {
         event.preventDefault();
         if (Object.keys(errors).length > 0) return; // prevent signup if there's an error
-        console.log("Signing up with", username, email, password);
+        console.log("Paying with", donorname, donateamount, walletaddress, email);
     }
 
     function hideInputs(hide) {
@@ -20,14 +26,16 @@
     async function checkUser() {
         errors = {}; // reset errors
 
-        if (!username.trim()) {
-            errors.username = "Username cannot be empty!";
+        if (!donorname.trim()) {
+            errors.donorname = "Donor Name cannot be empty!";
         }
 
-        if (!password.trim()) {
-            errors.password = "Password cannot be empty!";
-        } else if (password.length < 6) {
-            errors.password = "Password must be at least 6 characters long!";
+        if (!donateamount.trim()) {
+            errors.donateamount = "Donate amount cannot be empty!";
+        }
+
+        if (!walletaddress.trim()) {
+            errors.walletaddress = "Wallet address cannot be empty!";
         }
 
         if (!email.trim()) {
@@ -68,30 +76,42 @@
     <img src="/images/galaxy/galaxy-bg.jpg" alt="galaxy" id="galaxy-bg"/>
     <img src="/images/logo.png" alt="Logo" class="logo" />
     <div class="login-container">
-        <form on:submit={handleSignup} class="galaxy-name">
-            <div class="signup-star">
+        <form on:submit={handlePayment}>
+            <div class="galaxy-name">
                 <img src="/images/small-star-1.svg" alt="Star">
-                <h2>Sign Up</h2>
+                <h2>Donate To Our {username}'s Star! </h2>
                 <img src="/images/small-star-1.svg" alt="Star">
             </div>
 
+            <h6> Key in your personal information: </h6>
+
             <div class="input-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" bind:value={username} required />
+                <label for="donorname">Donor's Name</label>
+                <input type="text" id="donorname" bind:value={donorname} required />
                 <!-- <div class="underline"></div> -->
                  
-                {#if errors.username}
-                    <p class="error-message">{errors.username}</p>
+                {#if errors.donorname}
+                    <p class="error-message">{errors.donorname}</p>
+                {/if}
+            </div>
+ 
+            <div class="input-group">
+                <label for="donateamount">Donate Amount</label>
+                <input type="donateamount" id="donateamount" bind:value={donateamount} required />
+                <!-- <div class="underline"></div> -->
+
+                {#if errors.donateamount}
+                    <p class="error-message">{errors.donateamount}</p>
                 {/if}
             </div>
 
             <div class="input-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" bind:value={password} required />
+                <label for="walletaddress">Wallet Address</label>
+                <input type="walletaddress" id="walletaddress" bind:value={walletaddress} required />
                 <!-- <div class="underline"></div> -->
 
-                {#if errors.password}
-                    <p class="error-message">{errors.password}</p>
+                {#if errors.walletaddress}
+                    <p class="error-message">{errors.walletaddress}</p>
                 {/if}
             </div>
 
@@ -110,7 +130,7 @@
                 {#if isLoading}
                     Checking...
                 {:else}
-                    Next
+                    Donate here
                 {/if}
             </button>
 
@@ -120,7 +140,6 @@
             {/if}
 
             <img src="/images/name-pink.svg" alt="OhStellar Logo" class="ohstellar-logo" />
-            <p class="signup-text">Already have an account? <a href="/login">Log in here!</a></p>
         </form>
     </div>
 
@@ -136,8 +155,7 @@
         justify-content: center;
         min-height: 100vh;
         background-color: black;
-        position: relative; 
-        /* to bring img up */
+        position: relative;
     }
 
     .logo {
@@ -152,7 +170,8 @@
         padding: 3rem;
         border-radius: 16px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        width: 420px;
+        width: 1000px;
+        height: 668px;
         text-align: center;
         z-index: 1;
     }
@@ -201,7 +220,7 @@
     }
 
     .next-button {
-        width: 100%;
+        width: 20%;
         background-color: #E2C8DC;
         color: #5A3878;
         font-weight: bold;
@@ -219,17 +238,6 @@
         width: 80px;
         display: flex;
         margin: 15px auto 5px auto;
-    }
-
-    .signup-text {
-        font-size: 0.75rem;
-        margin-top: 5px;
-        margin-bottom: 10px;
-    }
-
-    .signup-text a {
-        color: #E2C8DC;
-        text-decoration: underline;
     }
 
     .stars-image {
@@ -262,7 +270,7 @@
         text-align: center;
     }
 
-    .input-group, .signup-text, .signup-star, .loading-message {
+    .input-group, .loading-message, .galaxy-name h2 {
         font-family: Lato, serif;
     }
 
@@ -274,11 +282,11 @@
         opacity: 0.5; 
     }
 
-    .signup-star img {
-        height: 3em;
+    .galaxy-name img {
+        height: 2em;
     }
 
-    .signup-star {
+    .galaxy-name {
         display: flex;
         align-items: center;
         gap: 10px;
@@ -286,7 +294,7 @@
         margin-bottom: 20px;
     }
 
-    .signup-star h2 {
+    .galaxy-name h2 {
         margin: 0;
     }
 </style>
