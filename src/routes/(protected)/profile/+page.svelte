@@ -39,7 +39,6 @@
         <p class="username">{username}'s star</p>   
         <img class="smallstar" src="/images/small-star-3.svg" alt="small star">
         <img class="smallstar2" src="/images/small-star-2.svg" alt="small star 2">  
-      
     </div>
     
     <div class="details">
@@ -76,10 +75,10 @@
   
   
     .smallstar{
-      height: auto;
+      height: 30%;
       position: relative;
       width: 15%;
-      bottom: 50%;
+      bottom: 110%;
       left: 10%;
       
     }

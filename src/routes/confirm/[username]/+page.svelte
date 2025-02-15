@@ -17,10 +17,28 @@
         <div class="confirmation">
             <div class="message2">I can confirm, to the best of my ability, that user <u>{name}</u> has successfully refrained from his addiction on 15/02/2025.</div>
         </div>
+        <div class="buttons">
+            <img src="/images/YesButton.svg" alt="yes button">
+            <img src="/images/NoButton.svg" alt="no button">
+        </div>
+        <img class="logo"src="/images/name-pink.svg" alt="OhStellar">
     </div>
 </div>
 
 <style>
+    .logo {
+        height: auto;
+        width: 10%;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+    }
+    .buttons {
+        display: flex;
+        gap: 50px;
+        justify-content: center;
+        padding: 30px;
+    }
     .message-box {
         background-color: #583878;
         height: 600px;
@@ -28,6 +46,7 @@
         border-radius: 20px;
         z-index: 1;
         position: absolute;
+        padding: 30px;
     }
 
     .title {
@@ -40,7 +59,6 @@
         justify-content: flex-start;
         font-size: 50px;
         gap: 20px;
-        padding: 30px;
         padding-bottom: 10px;
     }
 
@@ -48,7 +66,7 @@
         position: relative;
         text-align: center;
         color: #E2C8DC;
-        font-size: 30px;
+        font-size: 25px;
     }
 
     .message2 {
@@ -58,11 +76,12 @@
     .confirmation {
         position: relative;
         background-color: #D9D9D9;
-        height: 15%;
-        width: 105%;
+        height: 17%;
+        width: 110%;
         border-radius: 20px;
-        right: 2%;
+        right: 5%;
         box-shadow: 0px 5px;
+        padding: 2px;
     }
 
 
@@ -83,4 +102,6 @@
         padding: 140px;
         position: relative;
     }
+
+
 </style>
