@@ -37,6 +37,7 @@
         {#if username}
             <NavLink href='/galaxy/{encodeURIComponent(username)}' content="My Galaxy" />
         {/if}
+        <NavLink href="/login" content="Login" />
     </nav>
 
     <div class="leftthings">

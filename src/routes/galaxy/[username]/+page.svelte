@@ -64,7 +64,9 @@
         {#each Array(planetNo) as _, i}
             <Planet i={i + 1} bind:planet={planets[i]} userTag="user123"/>
         {/each}
-        <Star level={userLevel} bind:star={star}/>
+        <!-- <Star level={userLevel} bind:star={star} username={username}/> -->
+        <Star level={userLevel} bind:star={star} username={username} href="/payment"/>
+
     </div>
 
 </div>
