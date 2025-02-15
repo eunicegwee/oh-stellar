@@ -1,5 +1,6 @@
 <script>
     import { browser } from "$app/environment";
+    import { page } from "$app/stores";
 
     import Planet from "$lib/components/galaxy/Planet.svelte";
     import Star from "$lib/components/galaxy/Star.svelte";
@@ -11,7 +12,8 @@
     let star;
 
     let userLevel = 3;
-    let username = "username";
+    let username = "";
+    $: username = $page.params.username;
 
     onMount(() => {
 
