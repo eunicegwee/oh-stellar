@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" stroke-miterlimit="10" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" version="1.1" xml:space="preserve" viewBox="180.04 152.75 502.97 489.9">
+<defs>
+<radialGradient cx="0" cy="0" gradientTransform="matrix(251.484 0 0 251.484 431.529 397.695)" gradientUnits="userSpaceOnUse" id="RadialGradient" r="1">
+<stop offset="0" stop-color="#fe5f0b"/>
+<stop offset="0.670833" stop-color="#7000ef" stop-opacity="0.495"/>
+<stop offset="1" stop-color="#b33d98" stop-opacity="0"/>
+</radialGradient>
+<linearGradient gradientTransform="matrix(-599.65 599.426 -599.426 -599.65 989.385 336.033)" gradientUnits="userSpaceOnUse" id="LinearGradient" x1="0" x2="1" y1="0" y2="0">
+<stop offset="0" stop-color="#e2c8dc" stop-opacity="0"/>
+<stop offset="0.495" stop-color="#fe5f0b" stop-opacity="0.495"/>
+<stop offset="1" stop-color="#fe5f0b"/>
+</linearGradient>
+</defs>
+<g id="Layer-1">
+<g opacity="1">
+<g opacity="1">
+<path d="M180.045 397.695C180.045 262.414 292.638 152.747 431.529 152.747C570.42 152.747 683.013 262.414 683.013 397.695C683.013 532.976 570.42 642.643 431.529 642.643C292.638 642.643 180.045 532.976 180.045 397.695Z" fill="url(#RadialGradient)" fill-rule="nonzero" opacity="1" stroke="none"/>
+</g>
+</g>
+<path d="M656.386 402.463L463.516 376.477L454.031 375.198L426.845 172.835L408.067 374.223L206.671 392.927L409.022 420.19L436.211 622.553L454.991 421.164L656.386 402.463Z" fill="#fadade" fill-rule="nonzero" opacity="1" stroke="none"/>
+<path d="M542.182 400.041L447.174 382.056L440.863 348.653L429.224 287.04L418.719 357.795L415.218 381.38L414.481 381.489L342.25 392.184L326.772 394.475L326.035 394.585L320.876 395.348L352.792 401.39L415.884 413.334L433.834 508.35L441.166 458.969L441.493 456.758L444.228 438.333L444.338 437.596L447.839 414.011L465.529 411.391L542.182 400.041Z" fill="url(#LinearGradient)" fill-rule="nonzero" opacity="1" stroke="none"/>
+<path d="M409.495 417.788L417.506 402.761L401.74 396.323L418.031 391.361L411.435 375.661L426.463 383.672L432.901 367.906L437.862 384.197L453.563 377.602L445.552 392.629L461.317 399.067L445.027 404.029L451.622 419.729L436.595 411.718L430.156 427.483L425.195 411.193L409.495 417.788Z" fill="#f4dbde" fill-rule="nonzero" opacity="1" stroke="none"/>
+</g>
+</svg>

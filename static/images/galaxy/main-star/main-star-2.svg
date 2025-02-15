@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" stroke-miterlimit="10" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" version="1.1" xml:space="preserve" viewBox="259.45 67.16 681.26 653.21">
+<defs>
+<radialGradient cx="0" cy="0" gradientTransform="matrix(251.484 0 0 251.484 600.722 393.757)" gradientUnits="userSpaceOnUse" id="RadialGradient" r="1">
+<stop offset="0" stop-color="#fe5f0b"/>
+<stop offset="0.670833" stop-color="#7000ef" stop-opacity="0.495"/>
+<stop offset="1" stop-color="#b33d98" stop-opacity="0"/>
+</radialGradient>
+<linearGradient gradientTransform="matrix(310.272 0 0 310.272 444.939 393.759)" gradientUnits="userSpaceOnUse" id="LinearGradient" x1="0" x2="1" y1="0" y2="0">
+<stop offset="0" stop-color="#fba17d"/>
+<stop offset="0.395833" stop-color="#fe5f0b" stop-opacity="0.495"/>
+<stop offset="1" stop-color="#fe5f0b"/>
+</linearGradient>
+<linearGradient gradientTransform="matrix(0 847.875 -847.875 0 950.856 -44.3736)" gradientUnits="userSpaceOnUse" id="LinearGradient_2" x1="0" x2="1" y1="0" y2="0">
+<stop offset="0" stop-color="#e2c8dc" stop-opacity="0"/>
+<stop offset="0.495" stop-color="#fe5f0b" stop-opacity="0.495"/>
+<stop offset="1" stop-color="#fe5f0b"/>
+</linearGradient>
+<linearGradient gradientTransform="matrix(108.556 0 0 -720.735 762.416 502.787)" gradientUnits="userSpaceOnUse" id="LinearGradient_3" x1="0" x2="1" y1="0" y2="0">
+<stop offset="0" stop-color="#e2c8dc" stop-opacity="0"/>
+<stop offset="0.495" stop-color="#fe5f0b" stop-opacity="0.495"/>
+<stop offset="1" stop-color="#fe5f0b"/>
+</linearGradient>
+</defs>
+<g id="Layer-1">
+<path d="M840.1 163.614L611.325 338.13L600.073 346.712L360.051 163.614L551.007 393.756L360.051 623.9L600.073 440.806L840.097 623.9L649.141 393.756L840.1 163.614Z" fill="#e2c8dc" fill-rule="nonzero" opacity="1" stroke="none"/>
+<path d="M619.253 375.371L600.077 67.1551L580.899 375.371L259.448 393.759L580.899 412.147L600.077 720.363L619.253 412.147L940.703 393.759L619.253 375.371Z" fill="#e2c8dc" fill-rule="nonzero" opacity="1" stroke="none"/>
+<g opacity="1">
+<g opacity="1">
+<path d="M349.238 393.757C349.238 258.476 461.831 148.809 600.722 148.809C739.613 148.809 852.206 258.476 852.206 393.757C852.206 529.039 739.613 638.706 600.722 638.706C461.831 638.706 349.238 529.039 349.238 393.757Z" fill="url(#RadialGradient)" fill-rule="nonzero" opacity="1" stroke="none"/>
+</g>
+</g>
+<path d="M762.416 238.102L607.684 356.135L600.074 361.939L437.735 238.102L566.888 393.758L437.735 549.416L600.074 425.58L762.414 549.416L633.261 393.758L762.416 238.102Z" fill="#fadade" fill-rule="nonzero" opacity="1" stroke="none"/>
+<path d="M613.046 381.322L600.077 172.86L587.105 381.322L369.692 393.759L587.105 406.196L600.077 614.658L613.046 406.196L830.459 393.759L613.046 381.322Z" fill="#fadade" fill-rule="nonzero" opacity="1" stroke="none"/>
+<path d="M608.81 385.384L600.076 245.01L591.342 385.384L444.939 393.759L591.342 402.134L600.076 542.508L608.81 402.134L755.212 393.759L608.81 385.384Z" fill="url(#LinearGradient)" fill-rule="nonzero" opacity="1" stroke="none"/>
+<path d="M679.964 317.157L600.076 371.636L571.99 352.484L520.187 317.157L562.801 374.608L577.006 393.758L576.562 394.356L533.06 453.002L523.738 465.569L523.295 466.168L520.187 470.356L547.025 452.055L600.075 415.878L679.964 470.357L650.224 430.261L648.891 428.466L637.794 413.506L637.351 412.907L623.146 393.757L633.799 379.394L679.964 317.157Z" fill="url(#LinearGradient_2)" fill-rule="nonzero" opacity="1" stroke="none"/>
+<path d="M599.107 421.901L594.142 405.611L578.443 412.209L586.451 397.18L570.685 390.745L586.974 385.781L580.376 370.082L595.405 378.09L601.84 362.323L606.805 378.613L622.504 372.015L614.496 387.044L630.262 393.479L613.973 398.443L620.571 414.142L605.542 406.134L599.107 421.901Z" fill="#f4dbde" fill-rule="nonzero" opacity="1" stroke="none"/>
+<path d="M762.416 502.787C762.416 502.787 786.717 502.787 816.694 502.787C846.671 502.787 870.972 502.787 870.972 502.787C870.972 502.787 846.671 502.787 816.694 502.787C786.717 502.787 762.416 502.787 762.416 502.787Z" fill="url(#LinearGradient_3)" fill-rule="nonzero" opacity="1" stroke="none"/>
+</g>
+</svg>
