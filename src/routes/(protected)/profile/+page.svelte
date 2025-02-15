@@ -106,7 +106,7 @@
       color: #E2C8DC;
       text-align: center;
       font-family: 'Lato';
-      font-size: 50px;
+      font-size: 3vw;
       font-weight: bolder;
       display: flex;
       flex-direction: row;
@@ -156,6 +156,7 @@
         object-fit: cover; 
         opacity: 0.5;   
         z-index: 0;
+        background-size: 100% 100%;
     }
 
     .logo {

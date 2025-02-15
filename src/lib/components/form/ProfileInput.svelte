@@ -19,7 +19,7 @@
     .input {
       color:#E2C8DC;
       font-family: "Lato";
-      font-size: 30px;
+      font-size: 2vw;
       margin-top: 10px;
       display: flex;
       flex-direction: row;
