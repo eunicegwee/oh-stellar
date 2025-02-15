@@ -1,11 +1,13 @@
 <script>
-    // import Star from "$lib/components/galaxy/Star.svelte";
-  
-    // let star;
-  
-    let name = "Apple";
-  
-  </script>
+    import ProfileInput from "$lib/components/form/ProfileInput.svelte";
+    let name = "apple";
+    let email;
+    let wallet;
+    let addiction;
+    let donationMessage;
+    let editStatus = false;
+
+</script>
   
   
   <div class="galaxy">
@@ -23,21 +25,11 @@
             <img src="/images/EditButton.svg" alt="edit button">
         </button>
       </div>
-      <div class="name">
-        <p>Name: {name} </p>
-      </div>
-      <div class="email">
-        <p>Email:</p>
-      </div>
-      <div class="wallet">
-        <p>Wallet Address:</p>
-      </div>
-      <div class="addiction">
-        <p>Addiction: </p>
-      </div>
-      <div class="donation-message">
-        <p>Donation Message: </p>
-      </div>
+      <ProfileInput id="name" title="Name" {editStatus} input={name}/>
+      <ProfileInput id="email" title="Email" {editStatus} input={email}/>
+      <ProfileInput id="wallet" title="Wallet Address" {editStatus} input={wallet}/>
+      <ProfileInput id="addiction" title="Addiction" {editStatus} input={addiction}/>
+      <ProfileInput id="donationMessage" title="Donation Message" {editStatus} input={donationMessage}/>
       <img class="logo "src="/images/name-pink.svg" alt="OhStellar">
     </div>
   </div>
@@ -83,14 +75,16 @@
       z-index: 1;
     }
   
-    .name, .email, .wallet, .addiction, .donation-message {
+    /* .name, .email, .wallet, .addiction, .donation-message {
       color:#E2C8DC;
       font-family: "Lato";
       font-size: 30px;
       margin-top: 10px;
-      
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
     }
-  
+   */
     .profile {
       color: #E2C8DC;
       text-align: center;
