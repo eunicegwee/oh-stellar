@@ -3,6 +3,7 @@
     import { page } from "$app/stores";
 
     export let navLinks;
+    export let header;
     let searchQuery = "";
     
     function handleSearch() {
@@ -12,9 +13,7 @@
     }
 </script>
 
-<header>
-    
-
+<header bind:this={header}>
     <nav class="nav-links">
         {#each navLinks as { name, href }}
             <NavLink {href} content={name} />
@@ -46,13 +45,16 @@
 
 <style>
 header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 99;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
     background: linear-gradient(to right, #5A3878, #9C528A, #5A3878);
     flex-direction: row-reverse;
-    z-index: 1;
 }
 
 .searchlabel {

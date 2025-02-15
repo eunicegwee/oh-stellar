@@ -7,10 +7,17 @@
     import { onMount } from "svelte";
   
     let main;
+    let header;
+
+    // onMount(() => {
+    //   header = document.querySelector('main');
+    //   const html = document.getElementsByName('html')[0];
+    //   html.style.paddingTop = `${header.clientHeight}px`;
+    // });
 
 </script>
   
-<Header {navLinks} />
+<Header bind:header={header} {navLinks} />
 <main bind:this={main}>
     <slot />
 </main>
@@ -22,7 +29,7 @@
 
     main {
       flex-grow: 1;
-      background-color: #110420
+      background-color: #110420;
     }
   
     @media (max-width: 992px) {
