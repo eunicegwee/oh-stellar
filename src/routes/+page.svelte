@@ -2,6 +2,8 @@
     import { onMount } from 'svelte';
     import Planet from '$lib/components/galaxy/Planet.svelte';
 
+    let username = "user";
+
     let scrollY;
     let planets = [];
 
@@ -13,6 +15,7 @@
         const galaxyBg = document.getElementById('galaxy-bg');
         const orbit = document.getElementById('orbit-container');
         const logoName = document.getElementById('logo-name');
+        const subtext = document.querySelector('.subtext');
 
         const logo = document.getElementById('logo');
 
@@ -34,14 +37,16 @@
             logo.style.width = `${800 - ((scrollY / 100) * 600)}px`;
             logo.style.left = `${50 + (scrollY / 100) * ((orbitWidth / 2) / window.innerWidth) * 100}%`;
             logoName.style.opacity = 0;
-            logoName.style.width = "800px";
+            logoName.style.width = "700px";
 
         } else if (100 < scrollY <= 200) {
             if(scrollY <= 150) {
                 logoName.style.opacity = ((scrollY - 100) * 2) / 100;
             } else if(scrollY <= 200){
-                logoName.style.width = `${800 + (scrollY - 100)}px`;
+                logoName.style.width = `${700 + (scrollY - 100)}px`;
             }
+
+            subtext.style.opacity = (scrollY - 100) / 100;
             
             const radiusX = orbit.clientWidth / 2 - 20;
             const radiusY = orbit.clientHeight / 2 - 20;
@@ -114,6 +119,11 @@
             {/each}
         </div>
         <img src="/images/name-pink-glow.svg" alt="OhStellar" id="logo-name"/>
+        <p class="subtext">
+            Overcome addictions together! 
+            <a class="highlight" href="/payment/{encodeURIComponent(username)}">Donate</a> or 
+            <a class="highlight" href="/login">sign up now!</a>
+        </p>
         <img src="/images/galaxy/galaxy-bg.jpg" alt="galaxy" id="galaxy-bg"/>
     </div>
 </div>
@@ -148,7 +158,7 @@
         position: absolute;
         top: 45%;
         left: 50%;
-        width: 800px;
+        width: 700px;
         transform: translate(-50%, -50%);
         z-index: 1;
         opacity: 0;
@@ -172,5 +182,30 @@
         border: 2px dashed rgba(255, 255, 255, 0.3);
         opacity: 0;
         z-index: 1;
+    }
+
+    .subtext {
+        font-size: 30px;
+        color: white;
+        z-index: 1;
+        top: 60%;
+        position: absolute;
+        opacity: 0;
+    }
+
+    .highlight {
+        color: #EE8843;
+        font-weight: bold;
+        text-decoration: underline;
+    }
+
+    @media (max-width: 1300px) {
+        #logo-name {
+            width: 500px;
+        }
+
+        .subtext {
+            font-size: 20px;
+        }
     }
 </style>
