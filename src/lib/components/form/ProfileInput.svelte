@@ -25,5 +25,12 @@
       flex-direction: row;
       gap: 10px;
     }
+
+    .input input {
+        padding: 5px 10px;
+        border-radius: 30px;
+    }
+
+
   </style>
 
