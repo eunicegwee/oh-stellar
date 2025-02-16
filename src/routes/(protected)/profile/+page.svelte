@@ -8,7 +8,6 @@
     let donationMessage;
     let userLevel = 1;
     let star;
-    let username = "name";
     import {onMount} from "svelte";
 
     let editStatus = false;
@@ -20,10 +19,9 @@
     onMount(() => {
         if (star) {
             star.style.position = "relative";
-            star.style.width="80%";
-            // star.style.transform = "translate(-50%, -50%)";
+            star.style.width="100%";
             star.style.visibility = "visible";
-            star.style.paddingLeft="40px";
+            star.style.paddingLeft="5%";
             star.style.top="40%";
             star.style.left="40%";
         }
@@ -35,21 +33,20 @@
 <div class="galaxy">
     <img src="/images/galaxy/galaxy-bg.jpg" alt="galaxy" id="galaxy-bg" >
     <div class="star">
-        <Star level={userLevel} bind:star={star}/>
-        <p class="username">{username}'s star</p>   
+        <Star level={userLevel} bind:star={star}/> 
         <img class="smallstar" src="/images/small-star-3.svg" alt="small star">
         <img class="smallstar2" src="/images/small-star-2.svg" alt="small star 2">  
     </div>
     
     <div class="details">
       <div class="profile">
-        <img src="/images/BulletPointStar.svg" alt="profile star" style="padding: 20px; margin-bottom: 10px">
+        <img src="/images/BulletPointStar.svg" alt="profile star" style="margin-bottom: 2%; width: 3%">
         <p>Profile</p>
         <button class="edit-button" on:click={changeEditStatus}>
             {#if editStatus}
-                <img src="/images/Vector.svg" alt="tick">              
+                <img class="button" src="/images/Vector.svg" alt="tick">              
             {:else}
-                <img src="/images/EditButton.svg" alt="edit button">
+                <img class="button" src="/images/EditButton.svg" alt="edit button">
             {/if}
         </button>
       </div>
@@ -93,12 +90,11 @@
     .details {
       background-color: #583878;
       border-radius: 20px;
-      height: 600px;
+      height: auto;
       width: 50%;
-      box-sizing: border-box; 
       display: flex;
       flex-direction: column;
-      padding: 30px;
+      padding: 2%;
       z-index: 1;
     }
  
@@ -111,6 +107,7 @@
       display: flex;
       flex-direction: row;
       justify-content: center;
+      position: relative;
       
     }
   
@@ -121,21 +118,6 @@
       position: relative;
     }
 
-
-    .username {
-        font-family: "Lato";
-        font-size: 50px;
-        color: white;
-        position: relative;
-        display: flex;
-        z-index: 1;
-        flex-wrap: wrap;
-        align-content: flex-end;
-        justify-content: space-evenly;
-        top: 30%;
-        right: 5%;
-    }
-
     .edit-button {
         position: relative; 
         left: 30%;
@@ -143,6 +125,12 @@
         background: none;
         border: none;
     } 
+
+    .button {
+      position: relative;
+      height: auto;
+      container-name: details;
+    }
 
     .edit-button img {
         position: relative;

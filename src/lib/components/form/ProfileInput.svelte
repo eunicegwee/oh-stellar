@@ -20,10 +20,11 @@
       color:#E2C8DC;
       font-family: "Lato";
       font-size: 2vw;
-      margin-top: 10px;
+      margin-top: 2%;
       display: flex;
       flex-direction: row;
-      gap: 10px;
+      gap: 5%;
+      position: relative;
     }
 
     .input input {
