@@ -1,5 +1,31 @@
 <script>
-    let name = "hi";
+    import { page } from "$app/stores";
+    import { goto } from "$app/navigation";
+    let username;
+    $: username = $page.params.username;
+    let confirm;
+
+    async function run(state) {
+        confirm = state;
+
+        try {
+            const response = await fetch(`https://olive-walls-cough-103-181-222-27.loca.lt/confirm?username=${username}&confirmation=${confirm}`, 
+            {
+                method: "POST",
+                headers: {
+                    "bypass-tunnel-reminder": "HI",
+                    "Content-Type": "application/json"
+                }
+            });
+
+            if (response.status === 200) {
+                goto("/");
+            }
+        } catch (err) {
+            console.error("Login error:", err);
+            errors.username = "An error occurred while checking the user.";
+        }
+    }
 </script>
 
 <div class="galaxy">
@@ -10,16 +36,20 @@
             <p><u>Confirmation by Accountability Partner</u></p>
         </div>
         <div class="message">
-            <p>Your confirmation is important in supporting <u>{name}'s</u> journey toward recovery.</p>
+            <p>Your confirmation is important in supporting <u>{username}'s</u> journey toward recovery.</p>
             <p>If confirmed, the allocated funds will be released to encourage their continued progress.<br>
                 We thank you for your support which plays a crucial role in their commitment to change!</p>
         </div>
         <div class="confirmation">
-            <div class="message2">I can confirm, to the best of my ability, that user <u>{name}</u> has successfully refrained from his addiction on 15/02/2025.</div>
+            <div class="message2">I can confirm, to the best of my ability, that user <u>{username}</u> has successfully refrained from his addiction on 15/02/2025.</div>
         </div>
         <div class="buttons">
-            <img class="button" src="/images/YesButton.svg" alt="yes button">
-            <img class="button" src= "/images/NoButton.svg" alt="no button">
+            <button class="button" type="button" on:click={() => run(true)}>
+                <img src="/images/YesButton.svg" alt="yes button">
+              </button>
+            <button class="button" type="button" on:click={() => run(false)}>
+                <img src="/images/NoButton.svg" alt="no button">
+              </button>    
         </div>
         <img class="logo"src="/images/name-pink.svg" alt="OhStellar">
     </div>
@@ -47,6 +77,12 @@
         position: relative;
         width: 20%;
         height: 5%;
+        background: none;
+        border: none;
+    }
+
+    .button img {
+        width: 100%;
     }
 
     .message-box {
