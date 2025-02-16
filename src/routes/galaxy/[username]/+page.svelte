@@ -66,7 +66,6 @@
         {/each}
         <!-- <Star level={userLevel} bind:star={star} username={username}/> -->
         <Star level={userLevel} bind:star={star} username={username} href="/payment"/>
-
     </div>
 
 </div>
@@ -84,7 +83,10 @@
     }
 
     h2 {
-        color: white;
+        font-weight: bold;
+        color: #E2C8DC;
+        text-decoration: underline;
+        text-underline-offset: 5px;
         font-size: 2.5rem;
         z-index: 1;
         font-family: Lato, serif;

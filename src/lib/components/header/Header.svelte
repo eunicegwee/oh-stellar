@@ -36,6 +36,9 @@
         <NavLink href="/profile" content="Profile" />
         {#if username}
             <NavLink href='/galaxy/{encodeURIComponent(username)}' content="My Galaxy" />
+        <!-- Code to dynamically render galaxy/login when API implemented -->
+        <!-- {:else}
+            <NavLink href="/login" content="Login" /> -->
         {/if}
         <NavLink href="/login" content="Login" />
     </nav>
