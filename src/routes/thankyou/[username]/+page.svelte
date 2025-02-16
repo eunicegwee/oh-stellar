@@ -16,7 +16,11 @@
 
         <h6> Your payment will be processed and completed shortly. </h6>
 
-    <img src="/images/logo.png" alt="Logo" class="logo" />
+    <div class="planet-message-box">
+        <img src="/images/logo.png" alt="Logo" class="logo" />
+        <img src="/images/MessageBox/ThankYouMessage.svg" alt="messageimg" class="message-image" />
+    </div>
+
     <img src="/images/name-pink.svg" alt="OhStellar Logo" class="ohstellar-logo" />
 </main>
 
@@ -82,6 +86,22 @@
 
     .thankyou-name h2 {
         margin: 0;
+    }
+
+    .planet-message-box {
+        display: flex;
+        align-items: center; /* Vertically aligns items */
+        justify-content: center; /* Centers items horizontally */
+        gap: 10px; /* Adds space between elements */
+        margin-top: 20px;
+    }
+
+    .logo {
+        margin-right: 30px;
+    }
+
+    .message-image {
+        margin-left: -100px;
     }
 </style>
 

@@ -75,7 +75,7 @@
 <main>
     <img src="/images/galaxy/galaxy-bg.jpg" alt="galaxy" id="galaxy-bg"/>
     <img src="/images/logo.png" alt="Logo" class="logo" />
-    <div class="login-container">
+    <div class="payment-container">
         <form on:submit={handlePayment}>
             <div class="galaxy-name">
                 <img src="/images/small-star-1.svg" alt="Star">
@@ -138,7 +138,15 @@
             {#if isLoading}
                 <p class="loading-message">Checking user inputs...</p>
             {/if}
-
+            <div class="donate-msg">
+                <div class="message-content">
+                    <img src="/images/MessageBox/DonateMessageBox.svg" alt="donate-msg" class="donate-box" />
+                    <h4>A message from {username}:</h4>
+                    <p>Your generosity is more than just money—it’s a lifeline. 
+                    Every day I fight to quit, I remember your belief in me. 
+                    Thank you for giving me hope and a reason to keep going.</p>
+                </div>
+            </div>
             <img src="/images/name-pink.svg" alt="OhStellar Logo" class="ohstellar-logo" />
         </form>
     </div>
@@ -164,14 +172,14 @@
         z-index: 1;
     }
 
-    .login-container {
+    .payment-container {
         background-color: #5A3878;
         color: #E2C8DC;
         padding: 3rem;
         border-radius: 16px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         width: 1000px;
-        height: 668px;
+        height: 1050px;
         text-align: center;
         z-index: 1;
     }
@@ -270,7 +278,7 @@
         text-align: center;
     }
 
-    .input-group, .loading-message, .galaxy-name h2 {
+    .input-group, .loading-message, .galaxy-name h2, .message-content, .donate-msg {
         font-family: Lato, serif;
     }
 
@@ -297,5 +305,48 @@
     .galaxy-name h2 {
         margin: 0;
     }
+
+    .donate-msg {
+        position: relative;
+        top: 30%;
+        right: -65%;
+        width: 320px;
+        height: auto;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        position: relative;
+    }
+
+/* donate box img */
+    .donate-box {
+        width: 100%;
+        height: auto;
+        position: absolute;
+        top: 0px;
+        left: 0;
+        z-index: -1; /* Sends the image to the background */
+    }
+
+/* msg content inside the box */
+    .message-content {
+        position: absolute;
+        width: 80%;
+        height: 50px;
+        color: #5A3878;
+        font-size: 0.9rem;
+        line-height: 1.4;
+        text-align: center;
+        padding: 20px;
+        z-index: 1; /* ensures text stays above image */
+    }
+
+    .message-content h4 {
+        font-weight: bold;
+        margin-bottom: 8px;
+    }
+
 </style>
 
