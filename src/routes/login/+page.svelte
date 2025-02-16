@@ -3,7 +3,7 @@
     import { onMount } from "svelte";
     import Cookies from "js-cookie";
 
-    let email = "";
+    let username = "";
     let password = "";
     let errors = {};
     let isLoading = false;
@@ -11,7 +11,7 @@
     function handleLogin(event) {
       event.preventDefault();
       if (Object.keys(errors).length > 0) return;
-      console.log("Logging in with", email, password);
+      console.log("Logging in with", username, password);
     }
 
     function hideInputs(hide) {
@@ -23,11 +23,9 @@
     async function checkUser() {
         errors = {}; // reset errors
 
-        if (!email.trim()) {
-            errors.email = "Email cannot be empty!";
-        } else if (!/^\S+@\S+\.\S+$/.test(email)) { // regular expression syntax
-            errors.email = "Invalid email format!";
-        }
+        if (!username.trim()) {
+            errors.username = "Username cannot be empty!";
+        } 
 
         if (!password.trim()) {
             errors.password = "Password cannot be empty!";
@@ -44,25 +42,63 @@
         hideInputs(true);
 
         try {
-            // Simulated API request (Replace this with real API call)
-            await new Promise(resolve => setTimeout(resolve, 2000));
+            const response = await fetch(`https://olive-walls-cough-103-181-222-27.loca.lt/login-check?username=${username}&password=${password}`, {
+                method: "GET",
+                headers: {
+                    "bypass-tunnel-reminder": "HI",
+                    "Content-Type": "application/json"
+                }
+            });
 
-            // Example API response (Simulating user exists)
-            let data = { exists: Math.random() < 0.5 }; // Replace with real API response
-
-            if (data.exists) {
-                errors.email = "User already exists!";
-                hideInputs(false);
-            } else if (data.ok) {
-                Cookies.set("username", data.username, { expires: 1 });
-                window.location.reload(true);
+            const data = await response.json(); // Parse JSON response
+            console.log("Logged in successfully:", data);
+            if(data.username) {
+                Cookies.set("username", data.username, { expires: 1, path: "/" });
+                goto(`/galaxy/${username}`);
             }
+            
+            // if (data.exists) {
+            //     errors.email = "User already exists!";
+            // } else if (data.username) {
+            //     // Store username in cookies (1-day expiration)
+            //     Cookies.set("username", data.username, { expires: 1, path: "/" });
+
+            //     // Reload the page to apply session changes
+            //     window.location.reload(true);
+            // } else {
+            //     errors.email = "Unexpected response from server.";
+            // }
         } catch (err) {
-            errors.email = "An error occurred while checking the user.";
-            hideInputs(false);
+            console.error("Login error:", err);
+            if (response.status === 404) {
+                errors.email = "User not found!";
+                return;
+            }
+            errors.username = "An error occurred while checking the user.";
         } finally {
             isLoading = false; // Stop loading state
         }
+
+        // try {
+        //     // Simulated API request (Replace this with real API call)
+        //     await new Promise(resolve => setTimeout(resolve, 2000));
+
+        //     // Example API response (Simulating user exists)
+        //     let data = { exists: Math.random() < 0.5 }; // Replace with real API response
+
+        //     if (data.exists) {
+        //         errors.email = "User already exists!";
+        //         hideInputs(false);
+        //     } else if (data.ok) {
+        //         Cookies.set("username", data.username, { expires: 1 });
+        //         window.location.reload(true);
+        //     }
+        // } catch (err) {
+        //     errors.email = "An error occurred while checking the user.";
+        //     hideInputs(false);
+        // } finally {
+        //     isLoading = false; // Stop loading state
+        // }
     }
 
     //Test cookies
@@ -94,12 +130,12 @@
         </div>
 
         <div class="input-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" bind:value={email} required />
+            <label for="username">Username</label>
+            <input type="username" id="username" bind:value={username} required />
             <!-- <div class="underline"></div> -->
 
-            {#if errors.email}
-                <p class="error-message">{errors.email}</p>
+            {#if errors.username}
+                <p class="error-message">{errors.username}</p>
             {/if}
         </div>
 
