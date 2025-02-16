@@ -1,5 +1,8 @@
 <script>
     import Header from "$lib/components/header/Header.svelte";
+
+    import { goto } from "$app/navigation";
+    import Cookies from "js-cookie";
   
     export let data;
   
@@ -8,13 +11,13 @@
   
     let main;
     let header;
-    let username = "user";
+    let username;
 
-    // onMount(() => {
-    //   header = document.querySelector('main');
-    //   const html = document.getElementsByName('html')[0];
-    //   html.style.paddingTop = `${header.clientHeight}px`;
-    // });
+    $: username = Cookies.get("username");
+
+    onMount(() => {
+        username = Cookies.get("username");
+    });
 
 </script>
   

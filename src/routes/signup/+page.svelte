@@ -1,4 +1,7 @@
 <script>
+    import { goto } from "$app/navigation";
+    import Cookies from "js-cookie";
+
     let username = "";
     let email = "";
     let password = "";
@@ -94,7 +97,9 @@
                 errors.email = "User already exists! Please log in.";
                 isNewUser = false;
             } else {
-                isNewUser = true; // Show wallet and addiction inputs
+                isNewUser = true;
+                Cookies.set("username", data.username, { expires: 1 });
+                window.location.reload(true);// Show wallet and addiction inputs
             }
         } catch (err) {
             errors.email = "An error occurred while checking the user.";

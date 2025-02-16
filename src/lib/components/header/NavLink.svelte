@@ -1,8 +1,16 @@
 <script>
   import { onMount } from "svelte";
+  import Cookies from "js-cookie";
 
-  export let href = "#";
+  export let href;
   export let content = null;
+
+  onMount(() => {
+    if (href === "/logout") {
+      Cookies.remove("username");
+      window.location.reload(true);
+    }
+  });
 
 </script>
 
