@@ -1,25 +1,31 @@
 <script>
-    import { onMount } from "svelte";
-
-    let days_till_next_mile = 25; 
+    import { onMount } from "svelte";    
+    
+    // export let data;
+    let streak=100;
+    let level=2;
+    let money_donated_so_far=55;
+    let money_contributed_by_donors=15;
+    let money_donated_personally=40;
+    let total_days_without_addiction=30;
+    let days_till_next_mile=10; 
     let widthbar = days_till_next_mile/30 * 70;
-    
     let percentage = Math.round(days_till_next_mile/30 * 1000)/10;
+        
+    const data = fetch('https://olive-walls-cough-103-181-222-27.loca.lt/milestone-stats?username=jfes', {
+        method: "GET",
+        headers: {
+            "bypass-tunnel-reminder": "HI",
+            "Content-Type": "application/json"
+        }
+    })  
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error("Error:", error));
     
-    let streak = 20;
-    let level = 6;
-    let money_donated_so_far = 1500;
-    let money_contributed_by_donors = 1200;
-    let money_donated_personally = 300;
-    let total_days_without_addiction = 75;
-
-    function increaseStreak() {
-        streak += 1; // Increment the streak by 1
-    }
-
-    function resetStreak() {
-        streak = 0;
-    }
+    // $: if (data) {
+    //     level = data.level + 5;  // Assign level after data is fetched
+    // }
 
     onMount(() => {
         const milestoneBar = document.querySelector('.milestone-bar');
@@ -72,8 +78,7 @@
       </div>
 
     <div class="streakcontain">
-        <img src="/images/MessageBox/StreaksPlannet.svg" alt="Streaks" class="streaksplannet">
-        <label for="streak">Streak: </label>
+        <img src="/images/MessageBox/StreakRocket.png" alt="Streaks" class="streaksplannet">
         <input type="text" id="streak" bind:value={streak} readonly />
     </div>
 
@@ -153,8 +158,8 @@ h2 {
     position: absolute;
     width: 62%;
     height: 68%;
-    top: 51%;
-    left: 84%;
+    top: 50%;
+    left: 83%;
     transform: translate(-50%, -50%);
 }
 
@@ -184,8 +189,8 @@ h2 {
 
 input {
     position: absolute;
-    top: 4%;
-    left: -29%;
+    top: 5%;
+    left: -21%;
     width: 80%;
     text-align: center;
     font-family: 'Arial', sans-serif;
@@ -216,10 +221,10 @@ input {
 
 .streaksplannet {
     position: absolute;
-    top: 16%;
+    top: 15%;
     left: 11%;
-    width: 41%;
-    height: 100%;
+    width: 54%;
+    height: 70%;
     transform: translate(-50%, -50%);
 }
 
@@ -268,7 +273,7 @@ input {
     height: 66%;
     background: #5A3878;
     top: 50%;
-    left: 39%;
+    left: 38%;
     transform: translate(-50%, -50%);
     border-radius: 20px;
 }
