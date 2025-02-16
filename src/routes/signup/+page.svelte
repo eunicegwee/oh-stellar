@@ -1,4 +1,7 @@
 <script>
+    import { goto } from "$app/navigation";
+    import Cookies from "js-cookie";
+
     let username = "";
     let email = "";
     let password = "";
@@ -54,6 +57,9 @@
             if (data.exists) {
                 errors.email = "User already exists!";
                 hideInputs(false);
+            } else if (data.ok) {
+                Cookies.set("username", data.username, { expires: 1 });
+                window.location.reload(true);
             }
         } catch (err) {
             errors.email = "An error occurred while checking the user.";

@@ -33,14 +33,13 @@
             <button on:click={handleSearch}>🔍</button>
         </div>
         <span class="divider">|</span>
-        <NavLink href="/profile" content="Profile" />
         {#if username}
+            <NavLink href="/profile" content="Profile" />
             <NavLink href='/galaxy/{encodeURIComponent(username)}' content="My Galaxy" />
-        <!-- Code to dynamically render galaxy/login when API implemented -->
-        <!-- {:else}
-            <NavLink href="/login" content="Login" /> -->
+            <NavLink href="/logout" content="Logout" />
+        {:else}
+            <NavLink href="/login" content="Login" />
         {/if}
-        <NavLink href="/login" content="Login" />
     </nav>
 
     <div class="leftthings">

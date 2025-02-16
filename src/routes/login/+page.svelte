@@ -1,4 +1,8 @@
 <script>
+	import { goto } from "$app/navigation";
+    import { onMount } from "svelte";
+    import Cookies from "js-cookie";
+
     let email = "";
     let password = "";
     let errors = {};
@@ -49,6 +53,9 @@
             if (data.exists) {
                 errors.email = "User already exists!";
                 hideInputs(false);
+            } else if (data.ok) {
+                Cookies.set("username", data.username, { expires: 1 });
+                window.location.reload(true);
             }
         } catch (err) {
             errors.email = "An error occurred while checking the user.";
@@ -57,6 +64,22 @@
             isLoading = false; // Stop loading state
         }
     }
+
+    //Test cookies
+    // function checkUser() {
+    // //Testing
+    // Cookies.set("username", "apple", { expires: 1, path: "/", secure: false });
+    // console.log("username", Cookies.get("username"));
+    // setTimeout(() => {
+    //         window.location.reload(true);
+    //     }, 1000);
+    // }
+
+    // function debugCookies() {
+    //     console.log("Reading cookie AFTER reload:", Cookies.get("username"));
+    // }
+
+    // debugCookies();
   </script>
   
   <main>
@@ -90,7 +113,7 @@
             {/if}
         </div>
 
-        <button on:click={checkUser} type="button" class="login-button" disabled={isLoading}>
+        <button on:click={checkUser} type="button" class="login-button" disabled={isLoading} >
             {#if isLoading} 
                 Checking...
             {:else} 
