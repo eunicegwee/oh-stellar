@@ -150,9 +150,6 @@
             <img src="/images/name-pink.svg" alt="OhStellar Logo" class="ohstellar-logo" />
         </form>
     </div>
-
-    <img src="/images/small-star-1.svg" alt="Stars" class="stars-image" />
-    <img src="/images/small-star-3.svg" alt="Stars Background" class="small-star-1-logo"/>
 </main>
 
 <style>

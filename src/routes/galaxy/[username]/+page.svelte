@@ -1,5 +1,6 @@
 <script>
     import { browser } from "$app/environment";
+    import { page } from "$app/stores";
 
     import Planet from "$lib/components/galaxy/Planet.svelte";
     import Star from "$lib/components/galaxy/Star.svelte";
@@ -11,7 +12,8 @@
     let star;
 
     let userLevel = 3;
-    let username = "username";
+    let username = "";
+    $: username = $page.params.username;
 
     onMount(() => {
 
@@ -64,7 +66,6 @@
         {/each}
         <!-- <Star level={userLevel} bind:star={star} username={username}/> -->
         <Star level={userLevel} bind:star={star} username={username} href="/payment"/>
-
     </div>
 
 </div>
@@ -82,7 +83,10 @@
     }
 
     h2 {
-        color: white;
+        font-weight: bold;
+        color: #E2C8DC;
+        text-decoration: underline;
+        text-underline-offset: 5px;
         font-size: 2.5rem;
         z-index: 1;
         font-family: Lato, serif;
