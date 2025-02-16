@@ -9,7 +9,7 @@
     
     function handleSearch() {
         if (searchQuery.trim()) {
-            window.location.href = `/search?query=${encodeURIComponent(searchQuery)}`;
+            window.location.href = `/galaxy/${encodeURIComponent(searchQuery)}`;
         }
     }
 </script>
@@ -33,13 +33,13 @@
             <button on:click={handleSearch}>🔍</button>
         </div>
         <span class="divider">|</span>
-        {#if username}
+        <!-- {#if username} -->
             <NavLink href="/profile" content="Profile" />
             <NavLink href='/galaxy/{encodeURIComponent(username)}' content="My Galaxy" />
-            <NavLink href="/logout" content="Logout" />
-        {:else}
+            <!-- <NavLink href="/logout" content="Logout" /> -->
+        <!-- {:else} -->
             <NavLink href="/login" content="Login" />
-        {/if}
+        <!-- {/if} -->
     </nav>
 
     <div class="leftthings">

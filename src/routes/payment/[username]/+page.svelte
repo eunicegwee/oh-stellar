@@ -1,5 +1,6 @@
 <script>
     import { page } from '$app/stores';
+    import { goto } from '$app/navigation';
 
 // Extract the username from the route
     let username = "";
@@ -53,21 +54,33 @@
         hideInputs(true);
 
         try {
-            // simulated API request (Replace this with real API call)
-            await new Promise(resolve => setTimeout(resolve, 2000));
+            const response = await fetch(`https://olive-walls-cough-103-181-222-27.loca.lt/donation`, {
+                method: "POST",
+                headers: {
+                    "bypass-tunnel-reminder": "HI",
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    walletAddress: "https://ilp.interledger-test.dev/addict",
+                    amount: "1.00",
+                    currency: "USD"
+                })
+            });
 
-            // example API response (Simulating user exists)
-            let data = { exists: Math.random() < 0.5 }; // Replace with real API response
-
-            if (data.exists) {
-                errors.email = "User already exists!";
-                hideInputs(false);
+            const data = await response.json(); // Parse JSON response
+            console.log("Logged in successfully:", data);
+            if(data.username) {
+                Cookies.set("username", data.username, { expires: 1, path: "/" });
+                goto(`/galaxy/${username}`);
             }
+
         } catch (err) {
-            errors.email = "An error occurred while checking the user.";
-            hideInputs(false);
-        } finally {
-            isLoading = false; // stop loading state
+            console.error("Login error:", err);
+            if (response.status === 404) {
+                errors.email = "User not found!";
+                return;
+            }
+            errors.username = "An error occurred while checking the user.";
         }
     }
 </script>

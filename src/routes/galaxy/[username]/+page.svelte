@@ -7,16 +7,31 @@
 
     import { onMount, onDestroy } from "svelte";
 
-    let planetNo = 12;
+    export let data;
+
+    let names = ["Jaeden", "Win", "Janice", "Utsav", "Eunice", "Yay", "Yes", "Interledger"];
+    let planetNo = 8;
     let planets = [];
     let star;
 
     let userLevel = 3;
-    let username = "";
+    let username = "Apple";
     $: username = $page.params.username;
 
-    onMount(() => {
+    $: if (Array.isArray(data) && data.length > 1) {
+        names = Object.keys(data[0]); // ✅ Extracts planet names
+        userLevel = data[1]; // ✅ Extracts user level
+        planetNo = names.length;
+    }
 
+    onMount(async () => {
+        console.log(data.success);
+        if (Array.isArray(data) && data.length > 1) {
+            names = Object.keys(data[0]); // ✅ Extracts planet names
+            userLevel = data[1]; // ✅ Extracts user level
+            planetNo = names.length;
+        }
+        
         const orbit = document.getElementById('orbit-container');
         const radiusX = orbit.clientWidth / 2 - 20;
         const radiusY = orbit.clientHeight / 2 - 20;
@@ -61,11 +76,15 @@
 
     <img src="/images/galaxy/galaxy-bg.jpg" alt="galaxy" id="galaxy-bg"/>
     <div class="orbit-container" id="orbit-container">
+        {#if planetNo && names}
         {#each Array(planetNo) as _, i}
-            <Planet i={i + 1} bind:planet={planets[i]} userTag="user123"/>
+            <Planet i={i + 1} bind:planet={planets[i]} userTag={names[i]}/>
         {/each}
+        {/if}
         <!-- <Star level={userLevel} bind:star={star} username={username}/> -->
+         {#if userLevel}
         <Star level={userLevel} bind:star={star} username={username} href="/payment"/>
+        {/if}
     </div>
 
 </div>

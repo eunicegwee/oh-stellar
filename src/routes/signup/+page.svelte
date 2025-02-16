@@ -9,49 +9,48 @@
     let isLoading = false; // track loading state
     let walletAddress = "";
     let addiction = "";
-    let isNewUser = false;
     let isSubmitting = false;
 
 
-    async function handleSignup(event) {
-        event.preventDefault();
-        if (Object.keys(errors).length > 0) return;
+    // async function handleSignup(event) {
+    //     event.preventDefault();
+    //     if (Object.keys(errors).length > 0) return;
 
-        if (isNewUser && (!walletAddress.trim() || !addiction.trim())) {
-            errors.walletAddress = "Wallet Address is required!";
-            errors.addiction = "Addiction field cannot be empty!";
-            return;
-        }
+    //     if (isNewUser && (!walletAddress.trim() || !addiction.trim())) {
+    //         errors.walletAddress = "Wallet Address is required!";
+    //         errors.addiction = "Addiction field cannot be empty!";
+    //         return;
+    //     }
 
-        isSubmitting = true;
+    //     isSubmitting = true;
 
-        try {
-            let response = await fetch("/api/signup", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    username,
-                    email,
-                    password,
-                    walletAddress,
-                    addiction
-                }),
-            });
+    //     try {
+    //         let response = await fetch("/api/signup", {
+    //             method: "POST",
+    //             headers: { "Content-Type": "application/json" },
+    //             body: JSON.stringify({
+    //                 username,
+    //                 email,
+    //                 password,
+    //                 walletAddress,
+    //                 addiction
+    //             }),
+    //         });
 
-            let result = await response.json();
+    //         let result = await response.json();
 
-            if (response.ok) {
-                alert("Signup successful!");
-                // Redirect user or show success message
-            } else {
-                errors.server = result.error || "Signup failed!";
-            }
-        } catch (error) {
-            errors.server = "Network error! Please try again.";
-        } finally {
-            isSubmitting = false;
-        }
-    }
+    //         if (response.ok) {
+    //             alert("Signup successful!");
+    //             // Redirect user or show success message
+    //         } else {
+    //             errors.server = result.error || "Signup failed!";
+    //         }
+    //     } catch (error) {
+    //         errors.server = "Network error! Please try again.";
+    //     } finally {
+    //         isSubmitting = false;
+    //     }
+    // }
 
     function hideInputs(hide) {
         document.querySelectorAll(".input-group").forEach(input => {
@@ -78,6 +77,12 @@
             errors.email = "Invalid email format!";
         }
 
+        if (!walletAddress.trim() || !addiction.trim()) {
+            errors.walletAddress = "Wallet Address is required!";
+            errors.addiction = "Addiction field cannot be empty!";
+            return;
+        }
+
         // stop if validation errors exist
         if (Object.keys(errors).length > 0) {
             return;
@@ -87,24 +92,36 @@
         // hideInputs(true);
 
         try {
-            // Simulated API request (Replace with actual API call)
-            await new Promise(resolve => setTimeout(resolve, 2000));
+            const response = await fetch("https://olive-walls-cough-103-181-222-27.loca.lt/createuser", {
+                method: "POST",
+                headers: {
+                    "bypass-tunnel-reminder": "HI",
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ 
+                    username,
+                    password,
+                    email,
+                    walletaddress: walletAddress, // Must keep this since the variable name differs
+                    addiction
+                })
+            });
 
-            // Simulated API response
-            let data = { exists: false }; // Example API response
-
-            if (data.exists) {
-                errors.email = "User already exists! Please log in.";
-                isNewUser = false;
-            } else {
-                isNewUser = true;
-                Cookies.set("username", data.username, { expires: 1 });
-                window.location.reload(true);// Show wallet and addiction inputs
+            if (response.status === 200) {
+                console.log(response.status);
+                Cookies.set("username", data.username, { expires: 1, path: "/" });
+                goto(`/galaxy/${username}`);
             }
+            
         } catch (err) {
-            errors.email = "An error occurred while checking the user.";
+            console.error("Login error:", err);
+            if (response.status === 404) {
+                errors.email = {err};
+                return;
+            }
+            errors.username = "An error occurred while checking the user.";
         } finally {
-            isLoading = false; // stop loading state
+            isLoading = false; // Stop loading state
         }
     }
 </script>
@@ -113,7 +130,7 @@
     <img src="/images/galaxy/galaxy-bg.jpg" alt="galaxy" id="galaxy-bg"/>
     <img src="/images/logo.png" alt="Logo" class="logo" />
     <div class="login-container">
-        <form on:submit={handleSignup} class="galaxy-name">
+        <form class="galaxy-name">
             <div class="signup-star">
                 <img src="/images/small-star-1.svg" alt="Star">
                 <h2>Sign Up</h2>
@@ -150,7 +167,6 @@
                 {/if}
             </div>
 
-            {#if isNewUser}
                 <div class="input-group">
                     <label for="walletAddress">Wallet Address</label>
                     <input type="text" id="walletAddress" bind:value={walletAddress} required />
@@ -168,16 +184,13 @@
                         <p class="error-message">{errors.addiction}</p>
                     {/if}
                 </div>
-            {/if}
 
             <!-- button to check user before proceeding -->
             <button on:click={checkUser} type="button" class="next-button" disabled={isLoading}>
                 {#if isLoading}
                     Checking...
-                {:else if isNewUser} 
-                    Submit
                 {:else}
-                    Next
+                    Submit
                 {/if}
             </button>
 

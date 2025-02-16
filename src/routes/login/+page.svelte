@@ -54,6 +54,7 @@
             console.log("Logged in successfully:", data);
             if(data.username) {
                 Cookies.set("username", data.username, { expires: 1, path: "/" });
+                goto(`/galaxy/${username}`);
             }
             
             // if (data.exists) {
