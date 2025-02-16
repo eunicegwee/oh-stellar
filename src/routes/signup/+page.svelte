@@ -7,11 +7,50 @@
     let password = "";
     let errors = {}; // store multiple input errors
     let isLoading = false; // track loading state
+    let walletAddress = "";
+    let addiction = "";
+    let isNewUser = false;
+    let isSubmitting = false;
 
-    function handleSignup(event) {
+
+    async function handleSignup(event) {
         event.preventDefault();
-        if (Object.keys(errors).length > 0) return; // prevent signup if there's an error
-        console.log("Signing up with", username, email, password);
+        if (Object.keys(errors).length > 0) return;
+
+        if (isNewUser && (!walletAddress.trim() || !addiction.trim())) {
+            errors.walletAddress = "Wallet Address is required!";
+            errors.addiction = "Addiction field cannot be empty!";
+            return;
+        }
+
+        isSubmitting = true;
+
+        try {
+            let response = await fetch("/api/signup", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    username,
+                    email,
+                    password,
+                    walletAddress,
+                    addiction
+                }),
+            });
+
+            let result = await response.json();
+
+            if (response.ok) {
+                alert("Signup successful!");
+                // Redirect user or show success message
+            } else {
+                errors.server = result.error || "Signup failed!";
+            }
+        } catch (error) {
+            errors.server = "Network error! Please try again.";
+        } finally {
+            isSubmitting = false;
+        }
     }
 
     function hideInputs(hide) {
@@ -45,25 +84,25 @@
         }
 
         isLoading = true; // start API loading state
-        hideInputs(true);
+        // hideInputs(true);
 
         try {
-            // simulated API request (Replace this with real API call)
+            // Simulated API request (Replace with actual API call)
             await new Promise(resolve => setTimeout(resolve, 2000));
 
-            // example API response (Simulating user exists)
-            let data = { exists: Math.random() < 0.5 }; // Replace with real API response
+            // Simulated API response
+            let data = { exists: false }; // Example API response
 
             if (data.exists) {
-                errors.email = "User already exists!";
-                hideInputs(false);
-            } else if (data.ok) {
+                errors.email = "User already exists! Please log in.";
+                isNewUser = false;
+            } else {
+                isNewUser = true;
                 Cookies.set("username", data.username, { expires: 1 });
-                window.location.reload(true);
+                window.location.reload(true);// Show wallet and addiction inputs
             }
         } catch (err) {
             errors.email = "An error occurred while checking the user.";
-            hideInputs(false);
         } finally {
             isLoading = false; // stop loading state
         }
@@ -111,10 +150,32 @@
                 {/if}
             </div>
 
+            {#if isNewUser}
+                <div class="input-group">
+                    <label for="walletAddress">Wallet Address</label>
+                    <input type="text" id="walletAddress" bind:value={walletAddress} required />
+
+                    {#if errors.walletAddress}
+                        <p class="error-message">{errors.walletAddress}</p>
+                    {/if}
+                </div>
+
+                <div class="input-group">
+                    <label for="addiction">Addiction</label>
+                    <input type="text" id="addiction" bind:value={addiction} required />
+
+                    {#if errors.addiction}
+                        <p class="error-message">{errors.addiction}</p>
+                    {/if}
+                </div>
+            {/if}
+
             <!-- button to check user before proceeding -->
             <button on:click={checkUser} type="button" class="next-button" disabled={isLoading}>
                 {#if isLoading}
                     Checking...
+                {:else if isNewUser} 
+                    Submit
                 {:else}
                     Next
                 {/if}

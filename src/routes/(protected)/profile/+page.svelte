@@ -6,9 +6,9 @@
     let wallet;
     let addiction;
     let donationMessage;
+    let username;
     let userLevel = 1;
     let star;
-    let username = "name";
     import {onMount} from "svelte";
 
     let editStatus = false;
@@ -53,9 +53,9 @@
         </div>
         <button class="edit-button" on:click={changeEditStatus}>
             {#if editStatus}
-                <img src="/images/Vector.svg" alt="tick">              
+                <img class="button" src="/images/Vector.svg" alt="tick">              
             {:else}
-                <img src="/images/EditButton.svg" alt="edit button">
+                <img class="button" src="/images/EditButton.svg" alt="edit button">
             {/if}
         </button>
       </div>
@@ -101,7 +101,6 @@
       background-color: #583878;
       border-radius: 20px;
       width: 50%;
-      box-sizing: border-box; 
       display: flex;
       flex-direction: column;
       padding: 50px;
@@ -149,7 +148,7 @@
 
     .username {
         font-family: "Lato";
-        font-size: 50px;
+        font-size: 2vw;
         font-weight: bold;
         color: #E2C8DC;
         position: relative;
@@ -169,6 +168,12 @@
         background: none;
         border: none;
     } 
+
+    .button {
+      position: relative;
+      height: auto;
+      container-name: details;
+    }
 
     .edit-button img {
         position: relative;
@@ -190,7 +195,6 @@
         position: relative;
         height: 20%;
         width: 20%;
-        top: 5%;
         margin: auto;
     }
   </style>
