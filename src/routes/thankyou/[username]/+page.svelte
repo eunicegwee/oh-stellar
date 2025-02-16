@@ -102,5 +102,21 @@
     .thankyou-name h2 {
         margin: 0;
     }
+
+    .planet-message-box {
+        display: flex;
+        align-items: center; /* Vertically aligns items */
+        justify-content: center; /* Centers items horizontally */
+        gap: 10px; /* Adds space between elements */
+        margin-top: 20px;
+    }
+
+    .logo {
+        margin-right: 30px;
+    }
+
+    .message-image {
+        margin-left: -100px;
+    }
 </style>
 
