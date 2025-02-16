@@ -6,6 +6,7 @@
     let wallet;
     let addiction;
     let donationMessage;
+    let username;
     let userLevel = 1;
     let star;
     import {onMount} from "svelte";
@@ -147,7 +148,7 @@
 
     .username {
         font-family: "Lato";
-        font-size: 50px;
+        font-size: 2vw;
         font-weight: bold;
         color: #E2C8DC;
         position: relative;
@@ -194,7 +195,6 @@
         position: relative;
         height: 20%;
         width: 20%;
-        top: 5%;
         margin: auto;
     }
   </style>
